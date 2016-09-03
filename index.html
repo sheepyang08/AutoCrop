@@ -38,18 +38,8 @@
 	}
 
 	#showImage {
-		margin-left: 2%;
+		margin-left: 20px;
 	}
-
-	/*.arrow-right {
-	  width: 0; 
-	  height: 0; 
-	  border-top: 40px solid transparent;
-	  border-bottom: 40px solid transparent;
-	  border-left: 40px solid black;
-	  margin-right: 10%;
-	  vertical-align: center;
-	}*/
 
 	img {
 	    /*width:100%;*/
@@ -84,7 +74,7 @@
 		var out = "";
 	    var i;
 	    for(i = 0; i < arr.length; i++) {
-	        out += '<p><img src= "'+ arr[i][0] + '"class="origin" alt="' + arr[i][0] + '">' + '  ';
+	        out += '<p>' + i + " " + arr[i][1] + '<br><img src= "'+ arr[i][0] + '"class="origin" alt="' + arr[i][0] + '">' + '  ';
 	        out += '<img src= "./res/'+ i + '.jpg" class="crop" alt="' + i + '">' + '</p>';
 	    }
 	    document.getElementById("showImage").innerHTML = out;
