@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1265.19">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+
+    .header {
+    	background-color: rgba(217, 66, 81, 1);
+    	height: 120.0px;
+    	margin: -20.0px -20.0px 0.0px -20.0px;
+    	text-align: center;
+    	vertical-align: center;
+    	line-height: 120px;
+    }
+
+    h1 {
+    	color: white;
+    	font-family: Helvetica;
+    }
+
+    body {
+    	background-image: url("dots.jpg");
+    	background-attachment: fixed;
+    }
+
+    .mainSection {
+    	background-color: rgba(255, 255, 255, 0.8);
+		margin-left: 5%;
+		margin-right: 5%;
+		margin-bottom: 10%;
+		/*min-height: 500px;*/
+	}
+
+	#showImage {
+		margin-left: 2%;
+	}
+
+	/*.arrow-right {
+	  width: 0; 
+	  height: 0; 
+	  border-top: 40px solid transparent;
+	  border-bottom: 40px solid transparent;
+	  border-left: 40px solid black;
+	  margin-right: 10%;
+	  vertical-align: center;
+	}*/
+
+	img {
+	    /*width:100%;*/
+	    /*height: auto;*/
+	    border-style: solid;
+	    border-width: 1px;
+	}
+	/*img.origin {
+		width:30%;
+	    height:auto;
+	}
+	img.crop {
+		width:30%;
+	    height:auto;
+
+	}*/
+
+  </style>
+
+  <script>
+	var xmlhttp = new XMLHttpRequest();
+	var url = "https://test.flaunt.peekabuy.com/api/board/get_jc_product_images_batch/?page=2";
+
+	xmlhttp.onreadystatechange = function() {
+	    if (this.readyState == 4 && this.status == 200) {
+	        var obj = JSON.parse(this.responseText);
+	        parsingImages(obj.images);
+	    }
+	};
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+
+	function parsingImages(arr) {
+		var out = "";
+	    var i;
+	    for(i = 0; i < arr.length; i++) {
+	        out += '<p><img src= "'+ arr[i][0] + '"class="origin" alt="' + arr[i][0] + '">' + '  ';
+	        out += '<img src= "./res/'+ i + '.jpg" class="crop" alt="' + i + '">' + '</p>';
+	    }
+	    document.getElementById("showImage").innerHTML = out;
+	}
+
+  </script>
+
+</head>
+<body>
+
+<div class='header'>
+	<h1>Auto Crop Demo</h1>
+</div>
+
+<div class='mainSection'>
+	<br>
+	<div id="showImage">
+		<!-- <a href="" class='arrow-right' target="_blank"></a> -->
+	</div>
+	<br>
+</div>
+
+
+
+<!-- <hr> -->
+<br>
+</body>
+</html>
